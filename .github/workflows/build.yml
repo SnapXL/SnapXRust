@@ -1,0 +1,67 @@
+name: Build
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - "**"
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+"
+    paths-ignore:
+      - "**/*.md"
+      - "**/*.gitignore"
+      - "**/*.gitattributes"
+
+jobs:
+  build:
+    name: Build
+    runs-on: ${{matrix.os}}
+    timeout-minutes: 65
+    permissions:
+      contents: write
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          [
+#            ubuntu-24.04,
+#            ubuntu-24.04-arm,
+            macos-15,
+#            windows-2025,
+#            windows-11-arm,
+          ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.x.x
+      - uses: actions-rust-lang/setup-rust-toolchain@v1
+        name: Setup Rust
+        with:
+          targets: ${{ contains(matrix.os, 'macos') && 'x86_64-apple-darwin' || '' }}
+      - name: Cargo build
+        run: cargo build --release
+      - name: Create macOS Universal Binary
+        if: contains(matrix.os, 'macos')
+        run: |
+          cargo build --release --target x86_64-apple-darwin
+        
+          mkdir -p dist/osx
+        
+          lipo -create \
+            target/release/libsnapxrust.dylib \
+            target/x86_64-apple-darwin/release/libsnapxrust.dylib \
+            -output dist/osx/libsnapxrust.dylib
+        
+          file dist/osx/libsnapxrust.dylib
+      - name: Pack Nuget
+        run: dotnet pack -c Release
+      - name: Upload artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: ${{runner.os}}
+          path: dist/osx/libsnapxrust.dylib
+          if-no-files-found: error

@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <IsPackable>true</IsPackable>
+
+    </PropertyGroup>
+    <PropertyGroup Label="Package metadata">
+        <PackageLicenseExpression>GPL-3.0-or-later</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/SnapXL/snapxrust</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/SnapXL/snapxrust.git</RepositoryUrl>
+        <PackageId>BrycensRanch.SnapXL.SnapXRust</PackageId>
+        <RepositoryType>git</RepositoryType>
+        <Description>XCap exposed for macOS only. Internal SnapX usage only.</Description>
+        <Author>BrycensRanch</Author>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+    <ItemGroup>
+        <None Include="README.md" Pack="true" PackagePath="/"/>
+    </ItemGroup>
+    <Target Name="_IncludeRuntimesPackageFiles" BeforeTargets="_GetPackageFiles">
+        <ItemGroup>
+            <None Include="@(PackageFile)">
+                <Pack>true</Pack>
+                <PackagePath>%(PackageFile.PackagePath)</PackagePath>
+                <Visible>false</Visible>
+            </None>
+        </ItemGroup>
+    </Target>
+
+    <ItemGroup>
+        <PackageFile Include="dist/osx/*snapxrust*" PackagePath="runtimes/osx/native" />
+    </ItemGroup>
+</Project>
