@@ -44,7 +44,7 @@ fn main() {
             .arg("--git")
             .arg("https://github.com/sensslen/uniffi-bindgen-cs")
             .arg("--branch")
-            .arg("main")
+            .arg("use-latest-uniffi-release")
             .stdout(Stdio::inherit())
             .stderr(Stdio::inherit())
             .status()
