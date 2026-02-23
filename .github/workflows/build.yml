@@ -42,7 +42,7 @@ jobs:
         name: Setup Rust
         with:
           target: ${{ contains(matrix.os, 'macos') && 'x86_64-apple-darwin' || '' }}
-          toolchain: 1.88
+#          toolchain: 1.88
       - name: Cargo build
         run: cargo build --release
       - name: Create macOS Universal Binary
