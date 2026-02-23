@@ -5,13 +5,7 @@ use xcap::{
     Monitor, Window,
 };
 
-fn normalized(filename: &str) -> String {
-    filename
-        .replace("|", "")
-        .replace("\\", "")
-        .replace(":", "")
-        .replace("/", "")
-}
+
 pub struct ImageData {
     image: Vec<u8>,
     width: u32,
