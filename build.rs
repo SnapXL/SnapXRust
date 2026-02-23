@@ -45,7 +45,7 @@ fn main() {
             .arg("https://github.com/jmbryan4/uniffi-bindgen-cs")
             .arg("--branch")
             .arg("upgrade/uniffi-rs-0.31.0-clean")
-            .env("RUSTFLAGS", "-A dead_code")
+            .env("RUSTFLAGS", "--cap-lints allow")
             .stdout(Stdio::inherit())
             .stderr(Stdio::inherit())
             .status()
