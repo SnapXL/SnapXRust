@@ -218,7 +218,7 @@ struct UniffiRustCallStatus
 }
 
 // Base class for all uniffi exceptions
-internal class UniffiException : System.Exception
+public class UniffiException : System.Exception
 {
     public UniffiException()
         : base() { }
@@ -227,43 +227,43 @@ internal class UniffiException : System.Exception
         : base(message) { }
 }
 
-internal class UndeclaredErrorException : UniffiException
+public class UndeclaredErrorException : UniffiException
 {
     public UndeclaredErrorException(string message)
         : base(message) { }
 }
 
-internal class PanicException : UniffiException
+public class PanicException : UniffiException
 {
     public PanicException(string message)
         : base(message) { }
 }
 
-internal class AllocationException : UniffiException
+public class AllocationException : UniffiException
 {
     public AllocationException(string message)
         : base(message) { }
 }
 
-internal class InternalException : UniffiException
+public class InternalException : UniffiException
 {
     public InternalException(string message)
         : base(message) { }
 }
 
-internal class InvalidEnumException : InternalException
+public class InvalidEnumException : InternalException
 {
     public InvalidEnumException(string message)
         : base(message) { }
 }
 
-internal class UniffiContractVersionException : UniffiException
+public class UniffiContractVersionException : UniffiException
 {
     public UniffiContractVersionException(string message)
         : base(message) { }
 }
 
-internal class UniffiContractChecksumException : UniffiException
+public class UniffiContractChecksumException : UniffiException
 {
     public UniffiContractChecksumException(string message)
         : base(message) { }
@@ -1955,7 +1955,7 @@ class FfiConverterByteArray : FfiConverterRustBuffer<byte[]>
     }
 }
 
-internal record ImageData(byte[] Image, uint Width, uint Height) { }
+public record ImageData(byte[] Image, uint Width, uint Height) { }
 
 class FfiConverterTypeImageData : FfiConverterRustBuffer<ImageData>
 {
@@ -1986,7 +1986,7 @@ class FfiConverterTypeImageData : FfiConverterRustBuffer<ImageData>
     }
 }
 
-internal record MonitorData(uint Width, uint Height, int X, int Y, string Name) { }
+public record MonitorData(uint Width, uint Height, int X, int Y, string Name) { }
 
 class FfiConverterTypeMonitorData : FfiConverterRustBuffer<MonitorData>
 {
@@ -2023,7 +2023,7 @@ class FfiConverterTypeMonitorData : FfiConverterRustBuffer<MonitorData>
     }
 }
 
-internal record WindowData(
+public record WindowData(
     string AppName,
     string Title,
     uint ProcessId,
@@ -2142,7 +2142,7 @@ class FfiConverterSequenceTypeWindowData : FfiConverterRustBuffer<WindowData[]>
     }
 }
 #pragma warning restore 8625
-internal static class SnapxrustMethods
+public static class SnapxrustMethods
 {
     public static ImageData CaptureFullscreen()
     {

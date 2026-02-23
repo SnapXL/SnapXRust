@@ -13,6 +13,7 @@
         <PackageProjectUrl>https://github.com/SnapXL/snapxrust</PackageProjectUrl>
         <RepositoryUrl>https://github.com/SnapXL/snapxrust.git</RepositoryUrl>
         <PackageId>BrycensRanch.SnapXL.SnapXRust</PackageId>
+        <PackageVersion>1.0.1</PackageVersion>
         <RepositoryType>git</RepositoryType>
         <Description>XCap exposed for macOS only. Internal SnapX usage only.</Description>
         <Author>BrycensRanch</Author>
