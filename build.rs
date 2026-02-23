@@ -18,7 +18,7 @@ fn main() {
     if cfg!(target_os = "windows") {
         bindgen_path.set_extension("exe");
     }
-    let required_version = "uniffi-bindgen 0.10.0+v0.30.0";
+    let required_version = "uniffi-bindgen 0.11.0+v0.31.0";
     let mut needs_install = true;
     if let Ok(output) = Command::new(&bindgen_path).arg("--version").output() {
         if output.status.success() {
@@ -42,9 +42,9 @@ fn main() {
             .arg("install")
             .arg("uniffi-bindgen-cs")
             .arg("--git")
-            .arg("https://github.com/sensslen/uniffi-bindgen-cs")
+            .arg("https://github.com/jmbryan4/uniffi-bindgen-cs")
             .arg("--branch")
-            .arg("use-latest-uniffi-release")
+            .arg("upgrade/uniffi-rs-0.31.0-clean")
             .stdout(Stdio::inherit())
             .stderr(Stdio::inherit())
             .status()
