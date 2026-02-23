@@ -59,10 +59,10 @@ jobs:
         
           file dist/osx/libsnapxrust.dylib
       - name: Pack Nuget
-        run: dotnet pack -c Release
-      - name: Upload artifact
+        run: dotnet pack -c Release -o artifacts
+      - name: Upload Nuget
         uses: actions/upload-artifact@v5
         with:
-          name: ${{runner.os}}
-          path: dist/osx/libsnapxrust.dylib
+          name: Nuget
+          path: artifacts/*.nupkg
           if-no-files-found: error
