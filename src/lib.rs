@@ -158,8 +158,8 @@ pub fn capture_fullscreen() -> ImageData {
     let total_width = monitors
         .iter()
         .map(|m| {
-            (m.x().expect("Failed to get monitor x") as u32
-                + m.width().expect("Failed to get monitor width"))
+            m.x().expect("Failed to get monitor x") as u32
+                + m.width().expect("Failed to get monitor width") 
         })
         .max()
         .unwrap();
@@ -167,8 +167,8 @@ pub fn capture_fullscreen() -> ImageData {
     let total_height = monitors
         .iter()
         .map(|m| {
-            (m.y().expect("Failed to get monitor y") as u32
-                + m.height().expect("Failed to get monitor height"))
+            m.y().expect("Failed to get monitor y") as u32
+                + m.height().expect("Failed to get monitor height") 
         })
         .max()
         .unwrap();
