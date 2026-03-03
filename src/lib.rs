@@ -220,16 +220,7 @@ pub fn capture_window(x: u32, y: u32) -> ImageData {
 
     let mut sorted_windows: Vec<_> = windows.iter().collect();
     sorted_windows.sort_by(|a, b| b.z().unwrap().cmp(&a.z().unwrap()));
-    println!("Total windows: {}", sorted_windows.len());
     for (index, w) in sorted_windows.iter().enumerate() {
-        println!(
-            "[{}] {} {} {} {}",
-            index,
-            w.title().unwrap(),
-            w.app_name().unwrap(),
-            w.pid().unwrap(),
-            w.z().unwrap()
-        );
     }
 
     let window = sorted_windows
