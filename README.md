@@ -1,5 +1,8 @@
 # snapxrust
 
+> [!IMPORTANT]
+> This repository has been archived in favor of SharpCapture using ScreenCaptureKit.
+
 C# Wrapper for Rust library XCap for macOS. This is an internal component for [SnapX](https://github.com/SnapXL/SnapX).
 
 No support is provided for this library. It is meant for SnapX only.
